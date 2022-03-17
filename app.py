@@ -10,7 +10,11 @@ while True:
     print("1 - Opções de Usuários")
     print("2 - Opções de Câmeras")
     print("0 - Sair")
-    opcao = int(input('Sua escolha: '))
+    try:
+        opcao = int(input('Sua escolha: '))
+    except:
+        print("Digite um valor numérico!")
+        continue
 
     if opcao == 0:
         app.fechar()
@@ -23,7 +27,12 @@ while True:
             print("4 - Listar os usuários cadastrados(Apenas Administradores);")
             print("5 - Buscar um usuário cadastrado(Apenas Administradores);")
             print("0 - Voltar")
-            opcao = int(input('Sua escolha: '))
+
+            try:
+                opcao = int(input('Sua escolha: '))
+            except:
+                print("Digite um valor numérico!")
+                continue
 
             if opcao == 0:
                 break
@@ -137,6 +146,9 @@ while True:
                 else:
                     print("Você não tem permissão para executar isso!")
 
+            else:
+                print("Opção indisponível!")
+
     elif opcao == 2:
         while True:
             print("1 - Criar uma câmera;")
@@ -146,7 +158,12 @@ while True:
                 "4 - Listar as câmeras de um usuário cadastrado(Apenas Administradores);")
             print("5 - Buscar uma câmera cadastrada(Apenas Administradores);")
             print("0 - Voltar")
-            opcao = int(input('Sua escolha: '))
+
+            try:
+                opcao = int(input('Sua escolha: '))
+            except:
+                print("Digite um valor numérico!")
+                continue
 
             if opcao == 0:
                 break
@@ -225,3 +242,8 @@ while True:
 
                 else:
                     print("Você não tem permissão para executar isso!")
+
+            else:
+                print("Opção indisponível!")
+    else:
+        print("Opção indisponível!")
