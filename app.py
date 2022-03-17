@@ -5,6 +5,8 @@ app = Aplicativo()
 print('#'*68)
 print("Olá, eu sou o aplicativo de gerenciamento de usuário e suas câmeras!")
 print('#'*68)
+app.checa_admin()
+
 
 while True:
     print("1 - Opções de Usuários")
@@ -60,8 +62,34 @@ while True:
                     else:
                         break
 
-                app.criar_usuario(
-                    nome, email, data_nascimento, 'Básico', senha)
+                print("Que tipo de usuário você quer criar?")
+                print("1 - Básico")
+                print("2 - Admin")
+
+                try:
+                    opcao = int(input('Sua escolha: '))
+                except:
+                    print("Digite um valor numérico!")
+                    continue
+
+                if opcao == 1:
+                    if app.criar_usuario(
+                            nome, email, data_nascimento, 'Básico', senha):
+                        print("Usuário do tipo Básico criado com sucesso!")
+
+                elif opcao == 2:
+                    if app.checa_admin():
+                        if app.criar_usuario(
+                                nome, email, data_nascimento, 'Admin', senha):
+                            print("Usuário do tipo Admin criado com sucesso!")
+                    else:
+                        print("Não é possível criar mais um Administrador")
+                        if app.criar_usuario(
+                                nome, email, data_nascimento, 'Básico', senha):
+                            print("Usuário do tipo Básico criado com sucesso!")
+
+                else:
+                    print("Opção indisponível!")
 
             elif opcao == 2:
                 nome = input("Digite o nome do usuário cadastrado: ").strip()
@@ -247,3 +275,5 @@ while True:
                 print("Opção indisponível!")
     else:
         print("Opção indisponível!")
+
+# Usuário criado com sucesso!

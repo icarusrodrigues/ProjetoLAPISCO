@@ -20,12 +20,12 @@ class Aplicativo:
                                            datetime.today().strftime('%Y-%m-%d'), datetime.today().strftime('%Y-%m-%d'), senha))
         except:
             print("Nome e/ou email indisponível/indisponíveis!")
-            return
+            return False
 
-        print("Usuário criado com sucesso!")
         self.conexao.commit()
+        return True
 
-    def excluir_usuario(self, nome, senha):
+    def excluir_usuario(self, nome):
         consulta = 'DELETE FROM usuarios WHERE nome = %s'
         self.cursor.execute(consulta, (nome,))
 
@@ -175,6 +175,16 @@ class Aplicativo:
             return False
         else:
             return True
+
+    def checa_admin(self):
+        consulta = "SELECT COUNT(tipo) from usuarios WHERE tipo = 'Admin';"
+        self.cursor.execute(consulta)
+        retorno = self.cursor.fetchall()[0]
+
+        if retorno[0] == 0:
+            return True
+        else:
+            return False
 
     def fechar(self):
         self.cursor.close()
