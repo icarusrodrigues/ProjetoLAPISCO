@@ -20,6 +20,7 @@ class Aplicativo:
                                            datetime.today().strftime('%Y-%m-%d'), datetime.today().strftime('%Y-%m-%d'), senha))
         except:
             print("Nome e/ou email indisponível/indisponíveis!")
+            return
 
         print("Usuário criado com sucesso!")
         self.conexao.commit()
@@ -38,6 +39,7 @@ class Aplicativo:
                 datetime.today().strftime("%Y-%m-%d")), nova_senha, nome, senha))
         except:
             print("Nome e/ou email indisponível/indisponíveis!")
+            return
 
         print("Usuário atualizado!")
         self.conexao.commit()
@@ -93,8 +95,10 @@ class Aplicativo:
                                            str(datetime.today().strftime("%Y-%m-%d"))))
         except psycopg2.errors.UniqueViolation:
             print("Nome indisponível!")
+            return
         except psycopg2.errors.ForeignKeyViolation:
             print("Usuário não cadastrado!")
+            return
 
         print("Câmera adicionada com sucesso!")
         self.conexao.commit()
@@ -113,8 +117,10 @@ class Aplicativo:
                 consulta, (novo_nome, novo_usuario, datetime.today().strftime('%Y-%m-%d'), nome))
         except psycopg2.errors.UniqueViolation:
             print("Nome indisponível!")
+            return
         except psycopg2.errors.ForeignKeyViolation:
             print("Câmera não cadastrada!")
+            return
 
         print("Câmera atualizada!")
         self.conexao.commit()
