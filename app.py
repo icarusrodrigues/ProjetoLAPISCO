@@ -5,8 +5,6 @@ app = Aplicativo()
 print('#'*68)
 print("Olá, eu sou o aplicativo de gerenciamento de usuário e suas câmeras!")
 print('#'*68)
-app.checa_admin()
-
 
 while True:
     print("1 - Opções de Usuários")
