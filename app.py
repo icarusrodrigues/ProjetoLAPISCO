@@ -275,5 +275,3 @@ while True:
                 print("Opção indisponível!")
     else:
         print("Opção indisponível!")
-
-# Usuário criado com sucesso!
