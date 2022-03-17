@@ -177,9 +177,12 @@ class Aplicativo:
             return True
 
     def checa_admin(self):
-        consulta = "SELECT COUNT(tipo) from usuarios WHERE tipo = 'Admin';"
+        consulta = "SELECT COUNT(nome) from public.usuarios WHERE tipo = 'Admin';"
         self.cursor.execute(consulta)
-        retorno = self.cursor.fetchall()[0]
+        try:
+            retorno = self.cursor.fetchall()[0]
+        except:
+            print("Ocorreu algum erro!")
 
         if retorno[0] == 0:
             return True
